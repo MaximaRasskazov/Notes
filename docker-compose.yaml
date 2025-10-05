@@ -1,0 +1,30 @@
+# Конфигурация DockerCompose для сервисов приложения
+services:
+  # БД PostgreSQL для сервиса авторизации
+  db_auth:
+    image: postgres:14-alpine     # Образ версии 14 (Alpine Linux)
+    container_name: db_auth       # Имя контейнера
+
+    ports:                        # Порты наружу
+      - ${POSTGRES_PORT}:5432
+
+    environment:                  # Переменные окружения для PostgreSQL
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+    volumes:                      # Тома для хранения данных PostgreSQL
+      - db_auth_vol:/var/lib/postgresql/data
+
+    restart: always               # При сбое будет перезапуск контейнера
+
+    networks:                     # Внутренняя сеть для связи между сервисами
+      - notes_net
+
+networks:
+  notes_net:
+    driver: bridge
+
+volumes:
+  db_auth_vol:  
+    driver: local
