@@ -12,6 +12,7 @@ import (
 // У сервера должны быть:
 // 	1. Конфигурации
 // 	2. Обработчики
+//  3. Запуск
 
 // Структура сервера
 type Server struct {
@@ -49,7 +50,7 @@ func NewServer(cfg *config.Config) (*Server, error) {
 func (s *Server) Serve() error {
 	// Запускаем Сервер
 	address := fmt.Sprintf("%s:%s", s.cfg.Host, s.cfg.Port)
-	fmt.Printf("Сервер запущен на %s\n", address)
+	fmt.Printf("Сервер запущен на http://%s\n", address)
 
 	return s.router.Run(address)
 }
