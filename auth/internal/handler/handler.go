@@ -26,7 +26,7 @@ func (h Handler) RegisterUser(c *gin.Context) {
 
 func (h Handler) LoginUser(c *gin.Context) {
 	c.JSON(200, gin.H{
-		"message":       "Пользователь успешнр авторизован",
+		"message":       "Пользователь успешно авторизован",
 		"access_token":  "example_access_token",
 		"refresh_token": "example_refresh_token",
 	})
