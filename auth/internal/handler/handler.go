@@ -6,7 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Handler содержит все обработчики для работы с пользователями
+// Handler содержит все обработчики, методы нужные
+// для работы с пользователями (HTTP-запросы)
 type Handler struct {
 	cfg *config.Config
 }
